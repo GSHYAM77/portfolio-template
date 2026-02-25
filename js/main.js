@@ -5,6 +5,7 @@
     const n = document.createElement(tag);
     for (const [k, v] of Object.entries(attrs)) {
       if (k === "class") n.className = v;
+      else if (k === "html") n.innerHTML = v;
       else if (k.startsWith("on") && typeof v === "function") n.addEventListener(k.slice(2), v);
       else n.setAttribute(k, v);
     }
@@ -37,154 +38,243 @@
     });
   }
 
-  function renderNav(nav = []) {
+  function nl2br(s = "") {
+    return (s || "").split("\n").map((line) => line.trim()).filter(Boolean).join("<br/>");
+  }
+
+  function ensureHashLinks(names = []) {
+    // Maps ["About","Services"] -> [{label:"About", href:"#about"}, ...]
+    return names.map((label) => ({
+      label,
+      href: "#" + String(label).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+    }));
+  }
+
+  function applyMeta(meta = {}) {
+    if (meta.title) document.title = meta.title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc && meta.description) desc.setAttribute("content", meta.description);
+
+    // favicon
+    const ico = document.querySelector('link[rel="icon"]');
+    if (ico && meta.favicon) ico.setAttribute("href", "./" + meta.favicon.replace(/^\//, ""));
+
+    // brand color as CSS var
+    if (meta.brandColor) {
+      document.documentElement.style.setProperty("--accent", meta.brandColor);
+    }
+  }
+
+  function renderNav(nav = {}) {
+    if ($("navLogo")) $("navLogo").textContent = nav.logo || "YN";
+
     const navEl = $("navLinks");
     if (!navEl) return;
     navEl.innerHTML = "";
-    nav.forEach((item) => {
-      navEl.appendChild(el("a", { href: item.href || "#", class: "nav-link" }, [item.label || "Link"]));
+
+    const links = Array.isArray(nav.links) ? ensureHashLinks(nav.links) : [];
+    links.forEach((item) => {
+      navEl.appendChild(el("a", { href: item.href, class: "nav-link" }, [item.label]));
     });
   }
 
   function renderHero(hero = {}) {
-    if ($("brandName")) $("brandName").textContent = hero.brand || "Template";
-    if ($("heroKicker")) $("heroKicker").textContent = hero.kicker || "";
-    if ($("heroTitle")) $("heroTitle").textContent = hero.title || "Your Name";
-    if ($("heroSubtitle")) $("heroSubtitle").textContent = hero.subtitle || "";
+    if ($("heroBadge")) $("heroBadge").textContent = hero.badge || "";
+    if ($("heroHeadline")) $("heroHeadline").innerHTML = nl2br(hero.headline || "Your Name");
+    if ($("heroSubheadline")) $("heroSubheadline").textContent = hero.subheadline || "";
 
-    const ctas = $("heroCtas");
-    if (ctas) {
-      ctas.innerHTML = "";
-      (hero.ctas || []).forEach((c) => {
-        ctas.appendChild(el("a", { href: c.href || "#", class: c.primary ? "btn primary" : "btn" }, [c.label || "CTA"]));
-      });
+    const ctaRow = $("heroCtaRow");
+    if (ctaRow) {
+      ctaRow.innerHTML = "";
+      if (hero.cta?.text) {
+        ctaRow.appendChild(el("a", { href: hero.cta.href || "#contact", class: "btn primary" }, [hero.cta.text]));
+      }
     }
 
-    const badges = $("heroBadges");
-    if (badges) {
-      badges.innerHTML = "";
-      (hero.badges || []).forEach((b) => badges.appendChild(el("span", { class: "badge" }, [b])));
+    const stats = $("heroStats");
+    if (stats) {
+      stats.innerHTML = "";
+      (hero.stats || []).forEach((s) => {
+        stats.appendChild(el("div", { class: "stat" }, [
+          el("div", { class: "stat-val" }, [String(s.value ?? "")]),
+          el("div", { class: "stat-lbl muted" }, [String(s.label ?? "")]),
+        ]));
+      });
     }
   }
 
   function renderAbout(about = {}) {
-    const card = $("aboutCard");
-    if (!card) return;
-    card.innerHTML = "";
-    card.appendChild(el("p", { class: "muted" }, [about.text || "Write a short bio here."]));
-    if (about.highlights?.length) {
-      const ul = el("ul", { class: "bullets" }, about.highlights.map((h) => el("li", {}, [h])));
-      card.appendChild(ul);
+    if ($("aboutLabel")) $("aboutLabel").textContent = about.sectionLabel || "About";
+    if ($("aboutHeading")) $("aboutHeading").innerHTML = nl2br(about.heading || "");
+
+    const body = $("aboutBody");
+    if (body) {
+      body.innerHTML = "";
+      (about.paragraphs || []).forEach((p) => body.appendChild(el("p", { class: "muted" }, [p])));
+
+      if (Array.isArray(about.highlights) && about.highlights.length) {
+        const grid = el("div", { class: "grid two" }, []);
+        about.highlights.forEach((h) => {
+          grid.appendChild(el("div", { class: "card mini" }, [
+            el("div", { class: "mini-title" }, [h.label || ""]),
+            el("div", { class: "muted" }, [h.detail || ""]),
+          ]));
+        });
+        body.appendChild(grid);
+      }
+
+      if (about.linkedin) {
+        body.appendChild(el("a", { class: "link", href: about.linkedin, target: "_blank", rel: "noreferrer" }, ["LinkedIn →"]));
+      }
     }
   }
 
-  function renderServices(services = []) {
+  function renderServices(services = {}) {
+    if ($("servicesLabel")) $("servicesLabel").textContent = services.sectionLabel || "Services";
+    if ($("servicesHeading")) $("servicesHeading").innerHTML = nl2br(services.heading || "");
+    if ($("servicesIntro")) $("servicesIntro").textContent = services.intro || "";
+
     const grid = $("servicesGrid");
-    if (!grid) return;
-    grid.innerHTML = "";
-    services.forEach((s) => {
-      grid.appendChild(el("div", { class: "card service" }, [
-        el("h3", {}, [s.title || "Service"]),
-        el("p", { class: "muted" }, [s.description || ""]),
-        s.turnaround ? el("p", { class: "meta" }, [`Turnaround: ${s.turnaround}`]) : el("span"),
-      ]));
-    });
-  }
-
-  function renderProjects(projects = []) {
-    const grid = $("projectsGrid");
-    if (!grid) return;
-    grid.innerHTML = "";
-    projects.forEach((p) => {
-      const links = el("div", { class: "card-links" }, []);
-      (p.links || []).forEach((l) => {
-        links.appendChild(el("a", { href: l.href || "#", class: "link", target: "_blank", rel: "noreferrer" }, [l.label || "Link"]));
-      });
-      grid.appendChild(el("div", { class: "card project" }, [
-        el("h3", {}, [p.title || "Project"]),
-        el("p", { class: "muted" }, [p.description || ""]),
-        links,
-      ]));
-    });
-  }
-
-  function renderTestimonials(items = []) {
-    const grid = $("testimonialsGrid");
-    if (!grid) return;
-    grid.innerHTML = "";
-    items.forEach((t) => {
-      grid.appendChild(el("div", { class: "card testimonial" }, [
-        el("p", {}, [`“${t.quote || ""}”`]),
-        el("p", { class: "meta" }, [`— ${t.name || "Client"}`]),
-      ]));
-    });
-  }
-
-  function renderProcess(steps = []) {
-    const wrap = $("processSteps");
-    if (!wrap) return;
-    wrap.innerHTML = "";
-    steps.forEach((s, idx) => {
-      wrap.appendChild(el("div", { class: "step" }, [
-        el("div", { class: "step-num" }, [`${idx + 1}`]),
-        el("div", {}, [
-          el("h3", {}, [s.title || "Step"]),
+    if (grid) {
+      grid.innerHTML = "";
+      (services.items || []).forEach((s) => {
+        const feats = el("ul", { class: "bullets" }, (s.features || []).map((f) => el("li", {}, [f])));
+        grid.appendChild(el("div", { class: "card service" }, [
+          el("h3", {}, [s.title || "Service"]),
           el("p", { class: "muted" }, [s.description || ""]),
-        ]),
-      ]));
-    });
+          feats,
+          el("div", { class: "meta-row" }, [
+            s.bestFor ? el("span", { class: "chip" }, [s.bestFor]) : el("span"),
+            s.turnaround ? el("span", { class: "chip" }, [`Turnaround: ${s.turnaround}`]) : el("span"),
+          ]),
+        ]));
+      });
+    }
+
+    const ctaRow = $("servicesCtaRow");
+    if (ctaRow) {
+      ctaRow.innerHTML = "";
+      if (services.cta?.text) {
+        ctaRow.appendChild(el("a", { href: services.cta.href || "#contact", class: "btn" }, [services.cta.text]));
+      }
+    }
   }
 
-  function renderFaq(items = []) {
+  function renderProjects(projects = {}) {
+    if ($("projectsLabel")) $("projectsLabel").textContent = projects.sectionLabel || "Projects";
+    if ($("projectsHeading")) $("projectsHeading").innerHTML = nl2br(projects.heading || "");
+    if ($("projectsIntro")) $("projectsIntro").textContent = projects.intro || "";
+
+    const grid = $("projectsGrid");
+    if (grid) {
+      grid.innerHTML = "";
+      (projects.items || []).forEach((p) => {
+        const tags = el("div", { class: "tags" }, (p.tags || []).map((t) => el("span", { class: "tag" }, [t])));
+        const url = p.url && p.url !== "#" ? p.url : "";
+        grid.appendChild(el("div", { class: "card project" }, [
+          el("div", { class: "meta" }, [`${p.type || ""}${p.year ? " · " + p.year : ""}`].filter(Boolean).join("")),
+          el("h3", {}, [p.title || "Project"]),
+          el("p", { class: "muted" }, [p.description || ""]),
+          p.role ? el("p", { class: "muted" }, [`Role: ${p.role}`]) : el("span"),
+          tags,
+          url ? el("a", { class: "link", href: url, target: "_blank", rel: "noreferrer" }, ["View →"]) : el("span"),
+        ]));
+      });
+    }
+  }
+
+  function renderTestimonials(t = {}) {
+    if ($("testimonialsLabel")) $("testimonialsLabel").textContent = t.sectionLabel || "Testimonials";
+    if ($("testimonialsHeading")) $("testimonialsHeading").innerHTML = nl2br(t.heading || "");
+
+    const grid = $("testimonialsGrid");
+    if (grid) {
+      grid.innerHTML = "";
+      (t.items || []).forEach((x) => {
+        grid.appendChild(el("div", { class: "card testimonial" }, [
+          el("p", {}, [`“${x.quote || ""}”`]),
+          el("p", { class: "meta" }, [`— ${x.author || "Client"}${x.role ? ", " + x.role : ""}`]),
+        ]));
+      });
+    }
+  }
+
+  function renderProcess(proc = {}) {
+    if ($("processLabel")) $("processLabel").textContent = proc.sectionLabel || "Process";
+    if ($("processHeading")) $("processHeading").innerHTML = nl2br(proc.heading || "");
+
+    const wrap = $("processSteps");
+    if (wrap) {
+      wrap.innerHTML = "";
+      (proc.steps || []).forEach((s) => {
+        wrap.appendChild(el("div", { class: "step" }, [
+          el("div", { class: "step-num" }, [s.number || ""]),
+          el("div", {}, [
+            el("h3", {}, [s.title || "Step"]),
+            el("p", { class: "muted" }, [s.description || ""]),
+          ]),
+        ]));
+      });
+    }
+  }
+
+  function renderFaq(faq = {}) {
+    if ($("faqLabel")) $("faqLabel").textContent = faq.sectionLabel || "FAQ";
+    if ($("faqHeading")) $("faqHeading").innerHTML = nl2br(faq.heading || "");
+
     const wrap = $("faqItems");
-    if (!wrap) return;
-    wrap.innerHTML = "";
-    items.forEach((f) => {
-      const details = el("details", { class: "faq-item" }, [
-        el("summary", { class: "faq-q" }, [f.q || "Question"]),
-        el("div", { class: "faq-a muted" }, [f.a || "Answer"]),
-      ]);
-      wrap.appendChild(details);
-    });
+    if (wrap) {
+      wrap.innerHTML = "";
+      (faq.items || []).forEach((f) => {
+        wrap.appendChild(el("details", { class: "faq-item" }, [
+          el("summary", { class: "faq-q" }, [f.question || "Question"]),
+          el("div", { class: "faq-a muted" }, [f.answer || "Answer"]),
+        ]));
+      });
+    }
   }
 
-  function renderContact(contact = {}) {
+  function renderContact(c = {}) {
+    if ($("contactLabel")) $("contactLabel").textContent = c.sectionLabel || "Contact";
+    if ($("contactHeading")) $("contactHeading").innerHTML = nl2br(c.heading || "");
+    if ($("contactIntro")) $("contactIntro").textContent = c.intro || "";
+
     const card = $("contactCard");
     if (!card) return;
     card.innerHTML = "";
 
-    const title = contact.title || "Let’s talk";
-    const blurb = contact.blurb || "Send a message and I’ll reply ASAP.";
-    card.appendChild(el("h3", {}, [title]));
-    card.appendChild(el("p", { class: "muted" }, [blurb]));
+    const email = c.email || "";
+    const formspreeAction = c.formspreeAction || "";
 
-    const endpoint = contact.formspreeEndpoint || "";
-    if (endpoint) {
-      card.appendChild(el("form", { class: "form", method: "POST", action: endpoint }, [
+    if (formspreeAction) {
+      card.appendChild(el("form", { class: "form", method: "POST", action: formspreeAction }, [
         el("input", { name: "name", placeholder: "Your name", required: "true" }),
         el("input", { name: "email", placeholder: "Email", type: "email", required: "true" }),
         el("textarea", { name: "message", placeholder: "Message", rows: "5", required: "true" }),
         el("button", { class: "btn primary", type: "submit" }, ["Send"]),
       ]));
+      if (email) card.appendChild(el("p", { class: "muted" }, [`Or email: ${email}`]));
     } else {
-      const email = contact.email || "";
-      card.appendChild(el("p", { class: "muted" }, [email ? `Email: ${email}` : "Add contact.formspreeEndpoint in content/site.json to enable the form."]));
-      if (email) {
-        card.appendChild(el("a", { class: "btn primary", href: `mailto:${email}` }, ["Email me"]));
-      }
+      card.appendChild(el("p", { class: "muted" }, [
+        email ? `Email: ${email}` : "Add contact.formspreeAction in content/site.json to enable the form."
+      ]));
+      if (email) card.appendChild(el("a", { class: "btn primary", href: `mailto:${email}` }, ["Email me"]));
     }
   }
 
-  function renderFooter(footer = {}) {
+  function renderFooter(f = {}) {
     const left = $("footerLeft");
     const right = $("footerRight");
-    if (left) left.textContent = footer.left || "© " + new Date().getFullYear();
+    if (left) left.textContent = `© ${new Date().getFullYear()}`;
+
     if (right) {
       right.innerHTML = "";
-      if (footer.creditText && footer.creditHref) {
-        right.appendChild(el("a", { href: footer.creditHref, class: "link", target: "_blank", rel: "noreferrer" }, [footer.creditText]));
-      } else {
-        right.textContent = footer.right || "";
+      const credit = [f.credit, f.creditName].filter(Boolean).join(" ");
+      if (f.creditLink && credit) {
+        right.appendChild(el("span", {}, [credit + " "]));
+        right.appendChild(el("a", { class: "link", href: f.creditLink, target: "_blank", rel: "noreferrer" }, [f.creditLink.replace(/^https?:\/\//, "")]));
+      } else if (credit) {
+        right.textContent = credit;
       }
     }
   }
@@ -192,25 +282,20 @@
   try {
     initTheme();
     const data = await loadJson("./content/site.json");
-    renderNav(data.nav || [
-      { label: "Home", href: "#home" },
-      { label: "About", href: "#about" },
-      { label: "Services", href: "#services" },
-      { label: "Projects", href: "#projects" },
-      { label: "Contact", href: "#contact" },
-    ]);
+    applyMeta(data.meta || {});
+    renderNav(data.nav || {});
     renderHero(data.hero || {});
     renderAbout(data.about || {});
-    renderServices(data.services || []);
-    renderProjects(data.projects || []);
-    renderTestimonials(data.testimonials || []);
-    renderProcess(data.process || []);
-    renderFaq(data.faq || []);
+    renderServices(data.services || {});
+    renderProjects(data.projects || {});
+    renderTestimonials(data.testimonials || {});
+    renderProcess(data.process || {});
+    renderFaq(data.faq || {});
     renderContact(data.contact || {});
     renderFooter(data.footer || {});
   } catch (e) {
     console.error(e);
-    if ($("heroTitle")) $("heroTitle").textContent = "Template loaded, but data failed to load.";
-    if ($("heroSubtitle")) $("heroSubtitle").textContent = String(e.message || e);
+    if ($("heroHeadline")) $("heroHeadline").textContent = "Template loaded, but content failed to load.";
+    if ($("heroSubheadline")) $("heroSubheadline").textContent = String(e.message || e);
   }
 })();

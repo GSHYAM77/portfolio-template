@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio Template</title>
   <meta name="description" content="Data-driven static portfolio template." />
+  <link rel="icon" href="./assets/favicon.ico" />
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <div class="brand" id="brandName">Template</div>
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="logo" id="navLogo">YN</span>
+      </a>
       <nav class="nav" id="navLinks"></nav>
       <button class="mode" id="modeToggle" type="button" aria-label="Toggle theme">☾</button>
     </div>
@@ -19,59 +22,72 @@
   <main id="app">
     <section class="hero" id="home">
       <div class="container hero-inner">
-        <p class="kicker" id="heroKicker"></p>
-        <h1 class="hero-title" id="heroTitle">Loading…</h1>
-        <p class="hero-subtitle" id="heroSubtitle"></p>
-        <div class="cta-row" id="heroCtas"></div>
-        <div class="hero-badges" id="heroBadges"></div>
+        <div class="pill" id="heroBadge"></div>
+        <h1 class="hero-title" id="heroHeadline">Loading…</h1>
+        <p class="hero-subtitle" id="heroSubheadline"></p>
+
+        <div class="cta-row" id="heroCtaRow"></div>
+
+        <div class="stats" id="heroStats"></div>
       </div>
     </section>
 
     <section class="section" id="about">
       <div class="container">
-        <h2 class="section-title">About</h2>
-        <div class="card" id="aboutCard"></div>
+        <p class="section-kicker" id="aboutLabel"></p>
+        <h2 class="section-title" id="aboutHeading"></h2>
+        <div class="card" id="aboutBody"></div>
       </div>
     </section>
 
     <section class="section" id="services">
       <div class="container">
-        <h2 class="section-title">Services</h2>
+        <p class="section-kicker" id="servicesLabel"></p>
+        <h2 class="section-title" id="servicesHeading"></h2>
+        <p class="muted" id="servicesIntro"></p>
         <div class="grid" id="servicesGrid"></div>
+        <div class="cta-row" id="servicesCtaRow"></div>
       </div>
     </section>
 
     <section class="section" id="projects">
       <div class="container">
-        <h2 class="section-title">Projects</h2>
+        <p class="section-kicker" id="projectsLabel"></p>
+        <h2 class="section-title" id="projectsHeading"></h2>
+        <p class="muted" id="projectsIntro"></p>
         <div class="grid" id="projectsGrid"></div>
       </div>
     </section>
 
     <section class="section" id="testimonials">
       <div class="container">
-        <h2 class="section-title">Testimonials</h2>
+        <p class="section-kicker" id="testimonialsLabel"></p>
+        <h2 class="section-title" id="testimonialsHeading"></h2>
         <div class="grid" id="testimonialsGrid"></div>
       </div>
     </section>
 
     <section class="section" id="process">
       <div class="container">
-        <h2 class="section-title">Process</h2>
+        <p class="section-kicker" id="processLabel"></p>
+        <h2 class="section-title" id="processHeading"></h2>
         <div class="steps" id="processSteps"></div>
       </div>
     </section>
 
     <section class="section" id="faq">
       <div class="container">
-        <h2 class="section-title">FAQ</h2>
+        <p class="section-kicker" id="faqLabel"></p>
+        <h2 class="section-title" id="faqHeading"></h2>
         <div class="faq" id="faqItems"></div>
       </div>
     </section>
 
     <section class="section" id="contact">
       <div class="container">
-        <h2 class="section-title">Contact</h2>
+        <p class="section-kicker" id="contactLabel"></p>
+        <h2 class="section-title" id="contactHeading"></h2>
+        <p class="muted" id="contactIntro"></p>
         <div class="card" id="contactCard"></div>
       </div>
     </section>
@@ -79,8 +95,8 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div id="footerLeft"></div>
-      <div id="footerRight"></div>
+      <div class="muted" id="footerLeft"></div>
+      <div class="muted" id="footerRight"></div>
     </div>
   </footer>
 
