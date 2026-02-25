@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "title": "Your Name — Web Developer & Designer",
+    "description": "Portfolio and services site",
+    "favicon": "assets/favicon.ico",
+    "brandColor": "#4dd1f0",
+    "formspreeId": ""
+  },
+  "nav": {
+    "logo": "YN",
+    "links": ["About", "Services", "Projects", "Testimonials", "Process", "FAQ", "Contact"]
+  },
+  "hero": {
+    "badge": "Based in Tennessee · Available",
+    "headline": "Building digital\npresence for\nreal businesses.",
+    "subheadline": "I design and ship websites that convert visitors into customers — clean, fast, and built to last.",
+    "stats": [
+      { "value": "3+", "label": "Live Sites" },
+      { "value": "2025", "label": "Active" },
+      { "value": "TN", "label": "Based" }
+    ],
+    "cta": { "text": "Start a Conversation", "href": "#contact" }
+  },
+  "about": {
+    "sectionLabel": "About",
+    "heading": "Builder mindset,\nlegal trajectory.",
+    "paragraphs": [
+      "I'm a pre-law student at the University of Tennessee at Chattanooga, pursuing a B.S. in Criminal Justice with a focus on law. Since late 2025, I've shipped production websites for small businesses, a political campaign, and an early-stage SaaS product.",
+      "I'm drawn to the intersection of technology, business, and regulation — building real things while working toward a legal career."
+    ],
+    "highlights": [
+      { "label": "Open to legal internships", "detail": "Law-adjacent roles, policy, and legal tech" },
+      { "label": "Selective web projects", "detail": "Small businesses and early-stage founders" }
+    ],
+    "skills": {
+      "Tech": ["HTML", "CSS", "JavaScript", "Responsive UI", "GitHub", "Vercel"],
+      "Design": ["Information Architecture", "Conversion UX", "Mobile-first"],
+      "Law Track": ["Criminal Justice B.S.", "HarvardX Cert.", "Yale Cert.", "UTC '26"]
+    },
+    "linkedin": "https://www.linkedin.com/in/ghanshyam-p-b364b83a5/"
+  },
+  "services": {
+    "sectionLabel": "Services",
+    "heading": "What I build\nfor you.",
+    "intro": "I work with a limited number of small businesses at a time — focused, fast, and built to convert.",
+    "items": [
+      {
+        "title": "Business Websites",
+        "description": "Professional websites for local businesses that look credible, load fast, and drive real inquiries.",
+        "features": ["Custom design, no templates", "Mobile-first, fast loading", "Contact forms + maps + CTAs", "Deployed & ready to go"],
+        "bestFor": "Local service businesses, shops, tradespeople",
+        "turnaround": "2–4 weeks"
+      },
+      {
+        "title": "Landing Pages",
+        "description": "Single-page sites built to convert — for campaigns, product launches, or lead generation.",
+        "features": ["Conversion-focused layout", "Optimized for a single goal", "Fast turnaround", "A/B friendly structure"],
+        "bestFor": "Campaigns, product launches, lead gen",
+        "turnaround": "5–7 days"
+      },
+      {
+        "title": "SaaS & MVPs",
+        "description": "Early-stage products and web apps for founders who need to move fast.",
+        "features": ["MVP scoping + build", "Clean UI + user flows", "Integrations + automation", "Deployed on Vercel"],
+        "bestFor": "Early-stage founders, startups",
+        "turnaround": "7–14 days"
+      }
+    ],
+    "cta": { "text": "Start a Conversation", "href": "#contact" }
+  },
+  "projects": {
+    "sectionLabel": "Selected Work",
+    "heading": "Live projects,\nreal results.",
+    "intro": "Every site is production-deployed, built for real clients and actual use cases — not mockups.",
+    "items": [
+      {
+        "type": "SaaS + Website",
+        "year": "2025",
+        "title": "NightShift Hotels",
+        "description": "Hotels lose revenue when calls go unanswered after hours. NightShift provides AI-assisted call handling and reservation flows so properties never miss a booking.",
+        "role": "Site design, UI, deployment & conversion layout",
+        "tags": ["HTML/CSS", "JS", "Vercel", "AI Integration"],
+        "url": "#"
+      },
+      {
+        "type": "Campaign Website",
+        "year": "2025",
+        "title": "Josh Jordan for Sheriff",
+        "description": "A voter-first campaign site built for clarity and mobile performance.",
+        "role": "Design, build, deployment & mobile-first layout",
+        "tags": ["HTML/CSS", "JS", "Mobile-first"],
+        "url": "#"
+      },
+      {
+        "type": "Local Business",
+        "year": "2025",
+        "title": "Gsudz Detailing",
+        "description": "A local auto detailing business needed pricing and contact to feel frictionless.",
+        "role": "Build, layout, conversion polish & deployment",
+        "tags": ["HTML/CSS", "JS", "Local SEO"],
+        "url": "#"
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionLabel": "Testimonials",
+    "heading": "What clients say.",
+    "items": [
+      { "quote": "Badass. To the point — and it's already driving real conversions.", "author": "Client", "role": "" }
+    ]
+  },
+  "process": {
+    "sectionLabel": "How It Works",
+    "heading": "From idea to live\nin days, not months.",
+    "steps": [
+      { "number": "01", "title": "Discover", "description": "We talk through your business, goals, and what's not working. No fluff — just clarity on what needs to be built." },
+      { "number": "02", "title": "Design", "description": "I build a focused layout around your customers and conversion goals. Every decision is intentional." },
+      { "number": "03", "title": "Build", "description": "Clean code, fast load, mobile-first — shipped on Vercel. No bloat, no templates, no shortcuts." },
+      { "number": "04", "title": "Launch", "description": "Live, tested, and ready to drive real inquiries from day one. You own everything." }
+    ]
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "heading": "Common questions.",
+    "items": [
+      { "question": "How long does a project take?", "answer": "Most sites ship in 1–4 weeks depending on scope. Landing pages can go live in under a week." },
+      { "question": "Do I own the code?", "answer": "Yes. You own everything — code, domain, hosting account. No lock-in." },
+      { "question": "What do you charge?", "answer": "Pricing depends on scope. Reach out and I'll give you a straight answer within 24 hours." },
+      { "question": "Can you maintain the site after launch?", "answer": "Yes. I offer lightweight retainers for updates, hosting, and performance monitoring." }
+    ]
+  },
+  "contact": {
+    "sectionLabel": "Contact",
+    "heading": "Let's work together.",
+    "intro": "Pick the channel that works for you — I respond fast.",
+    "email": "hello@example.com",
+    "formspreeAction": ""
+  },
+  "footer": {
+    "credit": "Built by",
+    "creditLink": "https://gshyamvp.com",
+    "creditName": "gshyamvp.com"
+  }
+}
