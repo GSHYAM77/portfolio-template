@@ -1,24 +1,175 @@
 {
   "meta": {
-    "title": "Local Business — Service Website",
-    "description": "Professional website for a local business",
+    "title": "Valley Golf Clubhouse — New & Used Golf Clubs in Dayton, TN",
+    "description": "Shop new & used golf clubs, trade-ins, regripping, and club fitting in Dayton, TN.",
     "favicon": "assets/favicon.ico",
-    "brandColor": "#22c55e",
+    "brandColor": "#2d6a4f",
     "formspreeId": ""
   },
-  "nav": { "logo": "LB", "links": ["About", "Services", "Projects", "Testimonials", "FAQ", "Contact"] },
-  "hero": {
-    "badge": "Serving your area",
-    "headline": "Reliable local\nservices you can trust.",
-    "subheadline": "Fast quotes. Quality work. Honest pricing.",
-    "stats": [{ "value": "24/7", "label": "Support" }, { "value": "100%", "label": "Satisfaction" }],
-    "cta": { "text": "Request a quote", "href": "#contact" }
+  "nav": {
+    "logo": "VGC",
+    "links": ["About", "Services", "Projects", "Testimonials", "FAQ", "Contact"]
   },
-  "about": { "sectionLabel": "About", "heading": "Your local experts.", "paragraphs": ["Short business bio."] },
-  "services": { "sectionLabel": "Services", "heading": "What we offer", "items": [] },
-  "projects": { "sectionLabel": "Work", "heading": "Recent jobs", "items": [] },
-  "testimonials": { "sectionLabel": "Reviews", "heading": "Customer feedback", "items": [] },
-  "faq": { "sectionLabel": "FAQ", "heading": "Questions", "items": [] },
-  "contact": { "sectionLabel": "Contact", "heading": "Get a quote", "email": "hello@example.com", "formspreeAction": "" },
-  "footer": { "credit": "Built by", "creditLink": "https://gshyamvp.com", "creditName": "gshyamvp.com" }
+  "hero": {
+    "badge": "Dayton, TN · Mon–Fri 10–6 · Sat 10–3",
+    "headline": "Your game\nstarts here.",
+    "subheadline": "New & used clubs, trade-ins, regripping, and fitting — all under one roof in Dayton, TN.",
+    "stats": [
+      { "value": "500+", "label": "Clubs In Stock" },
+      { "value": "Same-Day", "label": "Regrips" },
+      { "value": "By Appt", "label": "Club Fitting" }
+    ],
+    "cta": { "text": "Call Now", "href": "tel:+14235550199" }
+  },
+  "about": {
+    "sectionLabel": "About",
+    "heading": "Dayton's home\nfor golf.",
+    "paragraphs": [
+      "Valley Golf Clubhouse is a locally owned pro shop serving golfers across the Tennessee Valley. We carry drivers, irons, wedges, and putters from top brands — new and pre-owned.",
+      "Whether you're upgrading your bag or picking up your first set, we'll help you find the right fit at the right price. Walk-ins welcome; fittings by appointment."
+    ],
+    "highlights": [
+      { "label": "Trade-Ins Welcome", "detail": "Bring your old clubs — we'll make you an offer on the spot." },
+      { "label": "Fitting By Appointment", "detail": "Dial in loft, lie, shaft flex, and grip size for your swing." }
+    ]
+  },
+  "services": {
+    "sectionLabel": "Services",
+    "heading": "What we offer.",
+    "intro": "Everything you need to play better — no fluff, no upsell.",
+    "items": [
+      {
+        "title": "New & Used Clubs",
+        "description": "Drivers, irons, wedges, putters, and full sets from major brands. Quality-checked pre-owned options at every price point.",
+        "features": ["Top brands in stock", "Budget-friendly used options", "Full sets & individual clubs"],
+        "bestFor": "All skill levels",
+        "turnaround": "Walk in, walk out"
+      },
+      {
+        "title": "Trade-Ins",
+        "description": "Swap your old gear for store credit. Fair market valuations, no haggling.",
+        "features": ["On-the-spot quotes", "Credit toward any purchase", "All brands accepted"],
+        "bestFor": "Upgraders",
+        "turnaround": "Same day"
+      },
+      {
+        "title": "Regripping",
+        "description": "Worn grips kill your game. We regrip any club while you wait or by next day.",
+        "features": ["Multiple grip brands", "Same-day service available", "Bulk pricing for full sets"],
+        "bestFor": "Anyone with slippery grips",
+        "turnaround": "Same day – next day"
+      },
+      {
+        "title": "Club Fitting",
+        "description": "Personalized fitting sessions — loft, lie, shaft flex, grip size, and swing weight tuned to your game.",
+        "features": ["By appointment only", "Data-driven recommendations", "Fit any budget"],
+        "bestFor": "Serious golfers",
+        "turnaround": "By appointment"
+      }
+    ],
+    "cta": { "text": "Call Now", "href": "tel:+14235550199" }
+  },
+  "projects": {
+    "sectionLabel": "Featured Inventory",
+    "heading": "In stock now.",
+    "intro": "A sample of what's on the floor. Inventory changes weekly — call or stop by for the latest.",
+    "items": [
+      {
+        "type": "Driver",
+        "year": "2025",
+        "title": "TaylorMade Qi35 Max Driver",
+        "description": "460cc head, adjustable loft, low spin for max distance. New in box.",
+        "tags": ["New", "Driver", "TaylorMade"],
+        "url": "#"
+      },
+      {
+        "type": "Iron Set",
+        "year": "2024",
+        "title": "Callaway Paradym Ai Smoke Irons (5–PW)",
+        "description": "AI-designed face, forgiving cavity back. Lightly used, excellent condition.",
+        "tags": ["Used", "Irons", "Callaway"],
+        "url": "#"
+      },
+      {
+        "type": "Wedge",
+        "year": "2025",
+        "title": "Cleveland CBX4 ZipCore Wedge 56°",
+        "description": "Versatile sand wedge with maximum spin. New.",
+        "tags": ["New", "Wedge", "Cleveland"],
+        "url": "#"
+      },
+      {
+        "type": "Putter",
+        "year": "2024",
+        "title": "Odyssey Ai-ONE Milled Putter",
+        "description": "AI insert for consistent roll. Mallet head, excellent feel. Used — like new.",
+        "tags": ["Used", "Putter", "Odyssey"],
+        "url": "#"
+      },
+      {
+        "type": "Full Set",
+        "year": "2024",
+        "title": "Strata 16-Piece Complete Set",
+        "description": "Perfect beginner kit — driver, woods, irons, putter, and bag. New.",
+        "tags": ["New", "Full Set", "Strata"],
+        "url": "#"
+      },
+      {
+        "type": "Hybrid",
+        "year": "2025",
+        "title": "Ping G430 Hybrid 3H",
+        "description": "High launch, easy to hit from any lie. Pre-owned, great shape.",
+        "tags": ["Used", "Hybrid", "Ping"],
+        "url": "#"
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionLabel": "Testimonials",
+    "heading": "What golfers say.",
+    "items": [
+      { "quote": "Traded in my old irons and walked out with a fitted set for less than I expected. These guys are fair.", "author": "Marcus T.", "role": "Weekend golfer" },
+      { "quote": "Got my whole bag regripped in under an hour. Night and day difference on the course.", "author": "Donna S.", "role": "League player" },
+      { "quote": "My son's first real set came from Valley Golf. Staff was patient and helped him find the right fit.", "author": "James R.", "role": "Dad & golfer" }
+    ]
+  },
+  "process": {
+    "sectionLabel": "How It Works",
+    "heading": "From visit\nto first tee.",
+    "steps": [
+      { "number": "01", "title": "Browse or Call", "description": "Walk in during business hours or call (423) 555-0199 to ask about inventory." },
+      { "number": "02", "title": "Try & Compare", "description": "Handle the clubs, ask questions, and compare options side by side." },
+      { "number": "03", "title": "Trade or Buy", "description": "Bring old clubs for trade-in credit, or buy outright. Fair prices, no pressure." },
+      { "number": "04", "title": "Hit the Course", "description": "Walk out ready to play. Regrips and adjustments done same day when possible." }
+    ]
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "heading": "Common questions.",
+    "items": [
+      { "question": "Do you accept trade-ins?", "answer": "Yes. Bring any clubs in decent condition and we'll give you a fair quote on the spot. Trade value is applied as store credit." },
+      { "question": "How does club fitting work?", "answer": "Book an appointment and we'll measure your swing speed, launch angle, and preferences to recommend the right shaft, loft, lie, and grip size." },
+      { "question": "Do you ship clubs?", "answer": "We're a local shop — all sales are in-store pickup only. No online orders or shipping at this time." },
+      { "question": "Is there a warranty on used clubs?", "answer": "Used clubs are sold as-is, but we inspect every club for defects before it hits the floor. If something's off, we'll make it right within 7 days." },
+      { "question": "How long does regripping take?", "answer": "Most regrips are done same day. Full-set regrips may take until the next morning depending on volume." }
+    ]
+  },
+  "contact": {
+    "sectionLabel": "Contact",
+    "heading": "Stop by or call.",
+    "intro": "Open Mon–Fri 10am–6pm, Sat 10am–3pm. Closed Sunday.",
+    "email": "sales@valleygolfclubhouse.com",
+    "phone": "(423) 555-0199",
+    "address": "Dayton, TN",
+    "formspreeAction": "",
+    "ctas": [
+      { "text": "Call Now", "href": "tel:+14235550199" },
+      { "text": "Get Directions", "href": "https://www.google.com/maps/search/Valley+Golf+Clubhouse+Dayton+TN" }
+    ]
+  },
+  "footer": {
+    "credit": "Built by",
+    "creditLink": "https://gshyamvp.com",
+    "creditName": "gshyamvp.com"
+  }
 }
