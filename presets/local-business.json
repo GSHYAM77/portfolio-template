@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "Local Business — Service Website",
+    "description": "Professional website for a local business",
+    "favicon": "assets/favicon.ico",
+    "brandColor": "#22c55e",
+    "formspreeId": ""
+  },
+  "nav": { "logo": "LB", "links": ["About", "Services", "Projects", "Testimonials", "FAQ", "Contact"] },
+  "hero": {
+    "badge": "Serving your area",
+    "headline": "Reliable local\nservices you can trust.",
+    "subheadline": "Fast quotes. Quality work. Honest pricing.",
+    "stats": [{ "value": "24/7", "label": "Support" }, { "value": "100%", "label": "Satisfaction" }],
+    "cta": { "text": "Request a quote", "href": "#contact" }
+  },
+  "about": { "sectionLabel": "About", "heading": "Your local experts.", "paragraphs": ["Short business bio."] },
+  "services": { "sectionLabel": "Services", "heading": "What we offer", "items": [] },
+  "projects": { "sectionLabel": "Work", "heading": "Recent jobs", "items": [] },
+  "testimonials": { "sectionLabel": "Reviews", "heading": "Customer feedback", "items": [] },
+  "faq": { "sectionLabel": "FAQ", "heading": "Questions", "items": [] },
+  "contact": { "sectionLabel": "Contact", "heading": "Get a quote", "email": "hello@example.com", "formspreeAction": "" },
+  "footer": { "credit": "Built by", "creditLink": "https://gshyamvp.com", "creditName": "gshyamvp.com" }
+}

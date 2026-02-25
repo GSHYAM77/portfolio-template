@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "title": "Campaign — Services",
+    "description": "Campaign or service landing page",
+    "favicon": "assets/favicon.ico",
+    "brandColor": "#f97316",
+    "formspreeId": ""
+  },
+  "nav": { "logo": "CS", "links": ["About", "Services", "Testimonials", "FAQ", "Contact"] },
+  "hero": {
+    "badge": "Now accepting new clients",
+    "headline": "One page.\nOne goal.\nMore leads.",
+    "subheadline": "High-conversion landing pages for campaigns and launches.",
+    "stats": [{ "value": "2x", "label": "Conversion" }, { "value": "Fast", "label": "Turnaround" }],
+    "cta": { "text": "Start now", "href": "#contact" }
+  },
+  "about": { "sectionLabel": "About", "heading": "Focused pages that convert.", "paragraphs": ["Short pitch."] },
+  "services": { "sectionLabel": "Services", "heading": "What’s included", "items": [] },
+  "testimonials": { "sectionLabel": "Testimonials", "heading": "Results", "items": [] },
+  "faq": { "sectionLabel": "FAQ", "heading": "Common questions", "items": [] },
+  "contact": { "sectionLabel": "Contact", "heading": "Let’s launch", "email": "hello@example.com", "formspreeAction": "" },
+  "footer": { "credit": "Built by", "creditLink": "https://gshyamvp.com", "creditName": "gshyamvp.com" }
+}

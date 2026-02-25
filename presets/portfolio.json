@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "Your Name — Web Developer",
+    "description": "Personal portfolio",
+    "favicon": "assets/favicon.ico",
+    "brandColor": "#4dd1f0",
+    "formspreeId": ""
+  },
+  "nav": { "logo": "YN", "links": ["About", "Services", "Projects", "Testimonials", "Process", "FAQ", "Contact"] },
+  "hero": {
+    "badge": "Available for new projects",
+    "headline": "Designing & shipping\nhigh-conversion websites.",
+    "subheadline": "Clean, fast, and built to convert.",
+    "stats": [{ "value": "10+", "label": "Projects" }, { "value": "5★", "label": "Reviews" }],
+    "cta": { "text": "Get in touch", "href": "#contact" }
+  },
+  "about": { "sectionLabel": "About", "heading": "Builder mindset.", "paragraphs": ["Short bio here."] },
+  "services": { "sectionLabel": "Services", "heading": "What I do", "items": [] },
+  "projects": { "sectionLabel": "Projects", "heading": "Selected work", "items": [] },
+  "testimonials": { "sectionLabel": "Testimonials", "heading": "What clients say", "items": [] },
+  "process": { "sectionLabel": "Process", "heading": "How it works", "steps": [] },
+  "faq": { "sectionLabel": "FAQ", "heading": "Common questions", "items": [] },
+  "contact": { "sectionLabel": "Contact", "heading": "Let’s talk", "email": "hello@example.com", "formspreeAction": "" },
+  "footer": { "credit": "Built by", "creditLink": "https://gshyamvp.com", "creditName": "gshyamvp.com" }
+}
