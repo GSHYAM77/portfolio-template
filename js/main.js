@@ -40,7 +40,7 @@
   }
 
 try {
-      const data = await loadJson(`./styles/packs/${pack}.json`);
+      const data = await loadJson(`/styles/packs/${pack}.json`);
       const vars = (data && data.vars) || {};
       for (const [k, v] of Object.entries(vars)) {
         document.documentElement.style.setProperty(k, v);
@@ -313,7 +313,7 @@ try {
 
   try {
     initTheme();
-    const data = await loadJson("./content/site.json");
+    const data = await loadJson("/content/site.json");
     await applyStylePack(data.meta || {});
     applyMeta(data.meta || {});
     applyPageFilter();
