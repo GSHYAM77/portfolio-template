@@ -21,25 +21,8 @@
 
   async function applyStylePack(meta) {
     const pack = (meta && meta.stylePack) ? meta.stylePack : "modern-saas";
-    
-  function applyPageFilter() {
-    const page = document.body.getAttribute("data-page") || "home";
-    const all = ["about","services","projects","testimonials","process","faq","contact"];
-    const keepMap = {
-      home: all,
-      about: ["about","contact"],
-      services: ["services","testimonials","faq","contact"],
-      inventory: ["projects","testimonials","faq","contact"],
-      contact: ["contact"],
-    };
-    const keep = new Set(keepMap[page] || all);
-    all.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el && !keep.has(id)) el.style.display = "none";
-    });
-  }
 
-try {
+    try {
       const data = await loadJson(`/styles/packs/${pack}.json`);
       const vars = (data && data.vars) || {};
       for (const [k, v] of Object.entries(vars)) {
@@ -50,6 +33,25 @@ try {
       console.warn("Style pack load failed:", pack);
     }
   }
+
+
+  function applyPageFilter() {
+    const page = document.body.getAttribute("data-page") || "home";
+    const all = ["about","services","projects","testimonials","process","faq","contact"];
+    const keepMap = {
+      home: all,
+      about: ["about","contact"],
+      services: ["services","testimonials","faq","contact"],
+      inventory: ["projects","testimonials","faq","contact"],
+      contact: ["contact"]
+    };
+    const keep = new Set(keepMap[page] || all);
+    all.forEach((id) => {
+      const node = document.getElementById(id);
+      if (node && !keep.has(id)) node.style.display = "none";
+    });
+  }
+
 
   function setTheme(mode) {
     const root = document.documentElement;
@@ -316,7 +318,7 @@ try {
     const data = await loadJson("/content/site.json");
     await applyStylePack(data.meta || {});
     applyMeta(data.meta || {});
-    applyPageFilter();
+    if (typeof applyPageFilter === 'function') applyPageFilter();
     renderNav(data.nav || {});
     renderHero(data.hero || {});
     renderAbout(data.about || {});
