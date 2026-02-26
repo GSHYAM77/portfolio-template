@@ -1,0 +1,13 @@
+{
+  "name": "Luxury Black/Gold",
+  "vars": {
+    "--bg": "#070708",
+    "--card": "#0f0f12",
+    "--text": "#f4f1e6",
+    "--muted": "#c2b59b",
+    "--line": "rgba(244,241,230,.14)",
+    "--accent": "#d6b45a",
+    "--radius": "14px",
+    "--shadow": "0 18px 60px rgba(0,0,0,.55)"
+  }
+}

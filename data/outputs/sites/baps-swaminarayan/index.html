@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio Template</title>
+  <meta name="description" content="Data-driven static portfolio template." />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-page="home">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="logo" id="navLogo">YN</span>
+      </a>
+      <nav class="nav" id="navLinks"></nav>
+      <button class="mode" id="modeToggle" type="button" aria-label="Toggle theme">☾</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="pill" id="heroBadge"></div>
+        <h1 class="hero-title" id="heroHeadline">Loading…</h1>
+        <p class="hero-subtitle" id="heroSubheadline"></p>
+
+        <div class="cta-row" id="heroCtaRow"></div>
+
+        <div class="stats" id="heroStats"></div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <p class="section-kicker" id="aboutLabel"></p>
+        <h2 class="section-title" id="aboutHeading"></h2>
+        <div class="card" id="aboutBody"></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <p class="section-kicker" id="servicesLabel"></p>
+        <h2 class="section-title" id="servicesHeading"></h2>
+        <p class="muted" id="servicesIntro"></p>
+        <div class="grid" id="servicesGrid"></div>
+        <div class="cta-row" id="servicesCtaRow"></div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="section-kicker" id="projectsLabel"></p>
+        <h2 class="section-title" id="projectsHeading"></h2>
+        <p class="muted" id="projectsIntro"></p>
+        <div class="grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <p class="section-kicker" id="testimonialsLabel"></p>
+        <h2 class="section-title" id="testimonialsHeading"></h2>
+        <div class="grid" id="testimonialsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <p class="section-kicker" id="processLabel"></p>
+        <h2 class="section-title" id="processHeading"></h2>
+        <div class="steps" id="processSteps"></div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <p class="section-kicker" id="faqLabel"></p>
+        <h2 class="section-title" id="faqHeading"></h2>
+        <div class="faq" id="faqItems"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <p class="section-kicker" id="contactLabel"></p>
+        <h2 class="section-title" id="contactHeading"></h2>
+        <p class="muted" id="contactIntro"></p>
+        <div class="card" id="contactCard"></div>
+      </div>
+    </section>
+  
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="kicker" id="galleryLabel">Gallery</div>
+    <h2 id="galleryHeading">Gallery</h2>
+    <p class="muted" id="galleryIntro"></p>
+    <div id="galleryGrid" class="grid gallery"></div>
+  </div>
+</section>
+
+</main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="muted" id="footerLeft"></div>
+      <div class="muted" id="footerRight"></div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

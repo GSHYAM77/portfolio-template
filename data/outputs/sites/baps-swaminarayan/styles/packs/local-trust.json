@@ -1,0 +1,13 @@
+{
+  "name": "Local Trust",
+  "vars": {
+    "--bg": "#0b1410",
+    "--card": "#102016",
+    "--text": "#e7f0ea",
+    "--muted": "#9fb9aa",
+    "--line": "rgba(159,185,170,.20)",
+    "--accent": "#22c55e",
+    "--radius": "18px",
+    "--shadow": "0 14px 40px rgba(0,0,0,.35)"
+  }
+}

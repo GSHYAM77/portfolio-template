@@ -1,10 +1,11 @@
 {
   "meta": {
-    "title": "Local Business — Service Website",
+    "title": "Local Business \u2014 Service Website",
     "description": "Professional website for a local business",
     "favicon": "assets/favicon.ico",
-    "brandColor": "#22c55e",
-    "formspreeId": ""
+    "brandColor": "#e65100",
+    "formspreeId": "",
+    "stylePack": "luxury-blackgold"
   },
   "nav": {
     "logo": "LB",
@@ -66,7 +67,7 @@
   "contact": {
     "sectionLabel": "Contact",
     "heading": "Get a quote",
-    "email": "hello@example.com",
+    "email": "info@baps.org",
     "formspreeAction": ""
   },
   "footer": {

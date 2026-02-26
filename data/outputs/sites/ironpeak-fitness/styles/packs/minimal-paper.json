@@ -1,0 +1,13 @@
+{
+  "name": "Minimal Paper",
+  "vars": {
+    "--bg": "#ffffff",
+    "--card": "#f6f7fb",
+    "--text": "#0b1220",
+    "--muted": "#475569",
+    "--line": "rgba(2,6,23,.12)",
+    "--accent": "#0ea5e9",
+    "--radius": "14px",
+    "--shadow": "0 12px 34px rgba(2,6,23,.10)"
+  }
+}

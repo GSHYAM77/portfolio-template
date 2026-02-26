@@ -1,10 +1,11 @@
 {
   "meta": {
-    "title": "Local Business — Service Website",
+    "title": "Local Business \u2014 Service Website",
     "description": "Professional website for a local business",
     "favicon": "assets/favicon.ico",
-    "brandColor": "#22c55e",
-    "formspreeId": ""
+    "brandColor": "#ef4444",
+    "formspreeId": "",
+    "stylePack": "sporty-bold"
   },
   "nav": {
     "logo": "LB",
@@ -66,7 +67,7 @@
   "contact": {
     "sectionLabel": "Contact",
     "heading": "Get a quote",
-    "email": "hello@example.com",
+    "email": "hello@ironpeakfitness.com",
     "formspreeAction": ""
   },
   "footer": {
