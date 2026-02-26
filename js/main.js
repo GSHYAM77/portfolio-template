@@ -22,6 +22,45 @@
   async function applyStylePack(meta) {
     const pack = (meta && meta.stylePack) ? meta.stylePack : "modern-saas";
 
+  function renderGallery(g = {}) {
+    const host = document.getElementById("gallery");
+    const grid = document.getElementById("galleryGrid");
+    if (!host || !grid) return;
+
+    const items = (g && Array.isArray(g.items)) ? g.items : [];
+    if (!items.length) {
+      host.style.display = "none";
+      return;
+    }
+
+    const label = document.getElementById("galleryLabel");
+    const heading = document.getElementById("galleryHeading");
+    const intro = document.getElementById("galleryIntro");
+
+    if (label) label.textContent = g.sectionLabel || "Gallery";
+    if (heading) heading.innerHTML = nl2br(g.heading || "Gallery");
+    if (intro) intro.textContent = g.intro || "";
+
+    grid.innerHTML = "";
+    items.forEach((it) => {
+      const card = el("div", { class: "card" }, []);
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.referrerPolicy = "no-referrer";
+      img.src = it.src;
+      img.alt = it.alt || "";
+      img.style.width = "100%";
+      img.style.height = "220px";
+      img.style.objectFit = "cover";
+      img.style.borderRadius = "12px";
+      card.appendChild(img);
+      grid.appendChild(card);
+    });
+  }
+
+
+
     try {
       const data = await loadJson(`/styles/packs/${pack}.json`);
       const vars = (data && data.vars) || {};

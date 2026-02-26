@@ -33,6 +33,9 @@ fi
 SITE_DIR="$ROOT/data/outputs/sites/$NAME"
 cd "$SITE_DIR"
 
+# Hard gate: do not ship broken sites
+"$ROOT/scripts/verify-site.sh" "$SITE_DIR"
+
 # Clean stray file if present
 rm -f site.json 2>/dev/null || true
 
