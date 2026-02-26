@@ -25,7 +25,6 @@
 
 }
 
-  function renderGallery(g = {}) {
     const host = document.getElementById("gallery");
     const grid = document.getElementById("galleryGrid");
     if (!host || !grid) return;
