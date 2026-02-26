@@ -27,7 +27,7 @@ echo "== Verifying =="
 "$ROOT/scripts/verify-site.sh" "$SITE_DIR"
 
 echo "== Creating + pushing GitHub repo =="
-"$ROOT/scripts/new-site-repo.sh" "$NAME"
+"/scripts/new-site-repo.sh" --name "" --vis public --source ""
 
 echo "== Deploying to Vercel =="
 "$ROOT/scripts/deploy-vercel.sh" "$SITE_DIR"
