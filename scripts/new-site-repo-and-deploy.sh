@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+"$ROOT/scripts/sanitize-nbsp.sh" >/dev/null 2>&1 || true
+
 set -euo pipefail
 
 # Usage:
