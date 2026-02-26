@@ -2,19 +2,21 @@
 set -euo pipefail
 
 SITE_DIR="${1:?Usage: deploy-vercel.sh <site_dir>}"
-
 cd "$SITE_DIR"
 
-# Non-interactive production deploy
-OUT="$(vercel --prod --yes 2>&1 | tail -n 30)"
+OUT="$(vercel --prod --yes 2>&1 | tail -n 60)"
 
 echo "=== VERCEL OUTPUT (tail) ==="
 echo "$OUT"
 
-URL="$(echo "$OUT" | grep -Eo 'https?://[^ ]+' | head -n 1 || true)"
+# Prefer Aliased URL, then Production URL
+URL="$(echo "$OUT" | awk '/Aliased:/{print $2}' | tail -n 1)"
+if [[ -z "$URL" ]]; then
+  URL="$(echo "$OUT" | awk '/Production:/{print $2}' | tail -n 1)"
+fi
+
 if [[ -n "$URL" ]]; then
   echo "✅ LIVE_URL=$URL"
 else
-  echo "⚠️ Deployed, but could not parse URL from output."
-  exit 2
+  echo "⚠️ Deployed, but could not parse LIVE_URL. Search above for 'Aliased:' or 'Production:'."
 fi
