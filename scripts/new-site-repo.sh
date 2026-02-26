@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Usage:
-# scripts/new-site-repo.sh --name valley-golf-clubhouse --email sales@... --brand "#2d6a4f" --preset local-business --visibility public
-
 NAME=""; EMAIL=""; BRAND=""; PRESET="local-business"; VIS="public"; STYLEPACK=""
 
 while [[ $# -gt 0 ]]; do
@@ -19,7 +16,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ -z "$NAME" || -z "$EMAIL" || -z "$BRAND" ]]; then
-  echo "Missing required flags: --name --email --brand"
+  echo "Usage: scripts/new-site-repo.sh --name <slug> --email <email> --brand <hex> [--preset ...] [--stylepack ...] [--visibility public|private]"
   exit 1
 fi
 
@@ -36,19 +33,17 @@ fi
 SITE_DIR="$ROOT/data/outputs/sites/$NAME"
 cd "$SITE_DIR"
 
-# clean stray file if present
+# Clean stray file if present
 rm -f site.json 2>/dev/null || true
 
-# Init git and push to new repo
 git init
 git add -A
 git commit -m "Initial site: $NAME"
 
-# Create repo (idempotent-ish: if exists, it will error; that's fine)
 if [[ "$VIS" == "private" ]]; then
   gh repo create "GSHYAM77/$NAME" --private --source=. --remote=origin --push
 else
   gh repo create "GSHYAM77/$NAME" --public --source=. --remote=origin --push
 fi
 
-echo "✅ Repo created and pushed: https://github.com/GSHYAM77/$NAME"
+echo "✅ https://github.com/GSHYAM77/$NAME"
