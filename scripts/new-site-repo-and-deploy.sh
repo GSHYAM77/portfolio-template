@@ -3,8 +3,6 @@ set -euo pipefail
 
 # Usage:
 # ./scripts/new-site-repo-and-deploy.sh <slug> <email> <brand_hex> <preset> <stylepack>
-# Example:
-# ./scripts/new-site-repo-and-deploy.sh golf-clubs sales@golfclubs.com "#16a34a" local-business luxury-blackgold
 
 NAME="${1:?slug required}"
 EMAIL="${2:?email required}"
@@ -17,9 +15,9 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 echo "== Generating =="
 if [[ -n "$STYLEPACK" ]]; then
-  "$ROOT/scripts/new-site.sh" --name "$NAME" --email "$EMAIL" --brand "$BRAND" --preset "$PRESET" --stylepack "$STYLEPACK"
+  "$ROOT/scripts/new-site.sh" --name "$NAME" --email "$EMAIL" --brand "$BRAND" --preset "$PRESET" --stylepack "$STYLEPACK"
 else
-  "$ROOT/scripts/new-site.sh" --name "$NAME" --email "$EMAIL" --brand "$BRAND" --preset "$PRESET"
+  "$ROOT/scripts/new-site.sh" --name "$NAME" --email "$EMAIL" --brand "$BRAND" --preset "$PRESET"
 fi
 
 SITE_DIR="$ROOT/data/outputs/sites/$NAME"
