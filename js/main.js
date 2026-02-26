@@ -363,6 +363,7 @@
     renderAbout(data.about || {});
     renderServices(data.services || {});
     renderProjects(data.projects || {});
+    renderGallery(data.gallery || {});
     renderTestimonials(data.testimonials || {});
     renderProcess(data.process || {});
     renderFaq(data.faq || {});
